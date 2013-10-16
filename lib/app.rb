@@ -10,7 +10,16 @@ class IdeaBoxApp < Sinatra::Base
   end
 
   get '/' do
-    erb :index, locals: {ideas: IdeaStore.all.sort, idea: Idea.new}
+    if params[:tag_sort]
+      ideas = IdeaStore.view_by_tag(params[:tag_sort])
+    else
+      ideas = IdeaStore.all.sort
+    end
+    erb :index, locals: {
+        ideas: ideas,
+        idea: Idea.new,
+        tags: IdeaStore.all_tags
+      }
   end
 
   post '/' do

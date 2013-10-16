@@ -20,6 +20,14 @@ class IdeaStore
     ideas
   end
 
+  def self.all_tags
+    all_tags = all.map { |idea| idea.tags_array }.flatten.uniq
+  end
+
+  def self.view_by_tag(tag)
+    all.find_all { |idea| idea.tags_array.include?(tag) }
+  end
+
   def self.raw_ideas
     database.transaction do |db|
       db['ideas'] || []

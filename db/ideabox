@@ -2,13 +2,30 @@
 ideas:
 - title: Whoomp
   description: There it is!
+  rank: 1
+  id: 0
   tags: hip hop
 - title: OMG
   description: Becky, would you look at her butt!
-  rank: 8
+  rank: 9
   id: 1
-  tags: hip hip
+  tags: hip hop, butts
 - title: Listen all yall
   description: It's a sabotage!!
-  rank: 1
+  rank: 3
+  id: 2
   tags: hip hop
+- title: new
+  description: kickass idea
+  rank: 0
+  id: 3
+  tags: new, idea
+- title: another one
+  description: let's try this
+  tags: sample
+- title: the funky
+  description: cold medina
+  tags: hip hop, colds
+- title: I like
+  description: big butts and I can not lie
+  tags: butts, hip hop

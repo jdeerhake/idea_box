@@ -3,16 +3,23 @@
 <%= erb :form, locals: {idea: idea} %>
 
 <h3>Existing Ideas</h3>
-Sort by:<form action="/by_tags" method='GET' style="display: inline">
-    <input type="submit" value="Tags">
-  </form>
+View By Tag:
+<form action='/' method='GET'>
+  <select onchange="this.form.submit()" name="tag_sort">
+      <option value="" disabled="disabled" selected="selected">Please select a tag</option>
+      <option value='All'>All</option>
+      <% tags.each do |tag| %>
+      <option value='<%= tag %>'><%= tag %></option>
+      <% end %>
+  </select>
+</form>
 <ul>
   <% ideas.each do |idea| %>
     <li>
       <!-- <a href="/<%= idea.id %>/edit">Edit</a><br/> -->
       Title: <%= idea.title %><br/>
       Desc: <%= idea.description %><br/>
-      Tags: <%= idea.tags %><br/>
+      Tags: <%= idea.tags_array.join(",") %><br/>
       <form action='/<%= idea.id %>/like' method='POST' style="display: inline">
         <input type='submit' value="Bump"/>
       </form>

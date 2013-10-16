@@ -12,6 +12,17 @@ class Idea
     @tags = attributes["tags"]
   end
 
+  def tags_array
+    if @tags.nil?
+      tags_array = []
+    elsif @tags == []
+      tags_array = @tags
+    else
+      tags_array = @tags.split(",").map {|tag| tag.strip}
+    end
+    tags_array
+  end
+
   def <=>(other)
     other.rank <=> rank
   end
@@ -21,11 +32,9 @@ class Idea
   end
 
   def to_h
-
     instance_variables.each_with_object({}) do |var, hash|
       hash[var.to_s.delete("@")] = instance_variable_get(var)
     end
-
   end
 
   def like!
