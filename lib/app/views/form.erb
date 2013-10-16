@@ -1,0 +1,17 @@
+<form action='/<%= idea.id %>' method='POST'>
+  <p>
+    <% if idea.id %>
+      Edit your Idea:
+    <% else %>
+      Your Idea:
+    <% end %>
+  </p>
+  <% if idea.id %>
+    <input type="hidden" name="_method" value="PUT" />
+  <% end %>
+  Title:       <input type='text' name='idea[title]' value="<%= idea.title %>"/><br/>
+  Desc: <textarea name='idea[description]'><%= idea.description %></textarea><br/>
+  Tags: <input type='text' name='idea[tags]' value="<%= idea.tags %>"/><br/>
+  Enter multiple tags - use a comma to separate.<br/>
+  <input type='submit'/>
+</form>
