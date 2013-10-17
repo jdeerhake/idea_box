@@ -51,7 +51,11 @@ class IdeaBoxApp < Sinatra::Base
   end
 
   get '/by_tags' do
-    erb :by_tags, locals: {ideas: IdeaStore.all}
+    erb :by_tags, locals: {
+        ideas: IdeaStore.grouped_by_tags,
+        idea: Idea.new,
+        tags: IdeaStore.all_tags
+      }
   end
 
   delete '/:id' do |id|

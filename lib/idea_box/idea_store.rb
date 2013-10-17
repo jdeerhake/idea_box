@@ -32,6 +32,14 @@ class IdeaStore
     end
   end
 
+  def self.grouped_by_tags
+    gbt = all_tags.each_with_object({}) {|tag, h| h[tag] = nil}
+    gbt.each_key do |key|
+      gbt[key] = all.find_all {|idea| idea.tags_array.include?(key)}
+    end
+    gbt
+  end
+
   def self.raw_ideas
     database.transaction do |db|
       db['ideas'] || []
