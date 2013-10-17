@@ -25,7 +25,11 @@ class IdeaStore
   end
 
   def self.view_by_tag(tag)
-    all.find_all { |idea| idea.tags_array.include?(tag) }
+    if tag == "All"
+      all
+    else
+      all.find_all { |idea| idea.tags_array.include?(tag) }
+    end
   end
 
   def self.raw_ideas

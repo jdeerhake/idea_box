@@ -5,6 +5,29 @@ class IdeaBoxApp < Sinatra::Base
   set :method_override, true
   set :root, 'lib/app'
 
+  register Sinatra::AssetPack
+
+  assets {
+    serve '/js',     from: 'js'        # Default
+    serve '/css',    from: 'css'       # Default
+    serve '/images', from: 'images'    # Default
+
+    # The second parameter defines where the compressed version will be served.
+    # (Note: that parameter is optional, AssetPack will figure it out.)
+    # The final parameter is an array of glob patterns defining the contents
+    # of the package (as matched on the public URIs, not the filesystem)
+    # js :app, '/js/bootstrap.js', [
+    #   '/js/bootstrap.js'
+    # ]
+
+    css :application, '/css/bootstrap.css', [
+       '/css/bootstrap.min.css'
+    ]
+
+    # js_compression  :jsmin    # :jsmin | :yui | :closure | :uglify
+    css_compression :simple   # :simple | :sass | :yui | :sqwish
+  }
+
   configure :development do
     register Sinatra::Reloader
   end

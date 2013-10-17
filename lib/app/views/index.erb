@@ -1,35 +1,52 @@
-<h1>IdeaBox</h1>
+<div class="jumbotron">
+  <div class="container">
+  <div class="row">
 
-<%= erb :form, locals: {idea: idea} %>
+    <%= erb :form, locals: {idea: idea} %>
 
-<h3>Existing Ideas</h3>
-View By Tag:
-<form action='/' method='GET'>
-  <select onchange="this.form.submit()" name="tag_sort">
-      <option value="" disabled="disabled" selected="selected">Please select a tag</option>
-      <option value='All'>All</option>
-      <% tags.each do |tag| %>
-      <option value='<%= tag %>'><%= tag %></option>
-      <% end %>
-  </select>
-</form>
-<ul>
-  <% ideas.each do |idea| %>
-    <li>
-      <!-- <a href="/<%= idea.id %>/edit">Edit</a><br/> -->
-      Title: <%= idea.title %><br/>
-      Desc: <%= idea.description %><br/>
-      Tags: <%= idea.tags_array.join(",") %><br/>
-      <form action='/<%= idea.id %>/like' method='POST' style="display: inline">
-        <input type='submit' value="Bump"/>
-      </form>
-      <form action="/<%= idea.id %>/edit" method='GET' style="display: inline">
-        <input type="submit" value="Edit">
-      </form>
-      <form action='/<%= idea.id %>' method='POST' style="display: inline">
-        <input type="hidden" name="_method" value="DELETE">
-        <input type='submit' value="delete"/>
-      </form><br/>
-    </li>
-  <% end %>
-</ul>
+    <div class="col-md-6">
+        <h3>Sorting / Views</h3>
+        <form class="form-inline" action='/' method='GET'>
+          <div class="form-group">
+            View By Tag:
+          </div>
+          <div class="form-group">
+              <select class="form-control" onchange="this.form.submit()" name="tag_sort">
+                  <option value="" disabled="disabled" selected="selected">Please select a tag</option>
+                  <option value='All'>All</option>
+                  <% tags.each do |tag| %>
+                  <option value='<%= tag %>'><%= tag %></option>
+                  <% end %>
+              </select>
+          </div>
+        </form>
+    </div>
+  </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <% ideas.each do |idea| %>
+      <div class="col-md-4 col-sm-4 panel panel-default">
+          <div class="panel-heading">
+            <strong>Title:</strong> <%= idea.title %><br/>
+          </div>
+          <div class="panel-body">
+            <strong>Desc:</strong> <%= idea.description %><br/>
+            <strong>Tags:</strong> <%= idea.tags_array.join(",") %><br/>
+            <form action='/<%= idea.id %>/like' method='POST' style="display: inline">
+              <input type='submit' value="Bump" class="btn btn-default btn-xs"/>
+            </form>
+            <form action="/<%= idea.id %>/edit" method='GET' style="display: inline">
+              <input type="submit" value="Edit" class="btn btn-default btn-xs"/>
+            </form>
+            <form action='/<%= idea.id %>' method='POST' style="display: inline">
+              <input type="hidden" name="_method" value="DELETE">
+              <input type='submit' value="delete" class="btn btn-default btn-xs"/>
+            </form><br/>
+          </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -3,6 +3,7 @@ GEM
   specs:
     backports (3.3.5)
     coderay (1.0.9)
+    jsmin (1.0.1)
     method_source (0.8.2)
     multi_json (1.8.0)
     pry (0.9.12.2)
@@ -18,6 +19,11 @@ GEM
       rack (~> 1.4)
       rack-protection (~> 1.4)
       tilt (~> 1.3, >= 1.3.4)
+    sinatra-assetpack (0.3.1)
+      jsmin
+      rack-test
+      sinatra
+      tilt (>= 1.3.0)
     sinatra-contrib (1.4.1)
       backports (>= 2.0)
       multi_json
@@ -34,4 +40,5 @@ PLATFORMS
 DEPENDENCIES
   pry
   sinatra
+  sinatra-assetpack
   sinatra-contrib

@@ -1,17 +1,25 @@
-<form action='/<%= idea.id %>' method='POST'>
-  <p>
+<div class="col-md-6">
+  <form action='/<%= idea.id %>' method='POST' role="form">
+    <p>
+      <% if idea.id %>
+        <h3>Edit your Idea:</h3>
+      <% else %>
+        <h3>Your Idea:</h3>
+      <% end %>
+    </p>
     <% if idea.id %>
-      Edit your Idea:
-    <% else %>
-      Your Idea:
+      <input type="hidden" name="_method" value="PUT" />
     <% end %>
-  </p>
-  <% if idea.id %>
-    <input type="hidden" name="_method" value="PUT" />
-  <% end %>
-  Title: <input type='text' name='idea[title]' value="<%= idea.title %>"/><br/>
-  Desc: <textarea name='idea[description]'><%= idea.description %></textarea><br/>
-  Tags: <input type='text' name='idea[tags]' value="<%= idea.tags_array.join(",") %>"/><br/>
-  Enter multiple tags - use a comma to separate.<br/>
-  <input type='submit'/>
-</form>
+    <div class="form-group">
+      <input type='text' placeholder="Title" class="form-control" name='idea[title]' value="<%= idea.title %>"/>
+    </div>
+    <div class="form-group">
+      <textarea placeholder="Description" class="form-control" name='idea[description]'><%= idea.description %></textarea>
+    </div>
+    <div class="form-group">
+      <input type='text' placeholder="Tags" class="form-control" name='idea[tags]' value="<%= idea.tags_array.join(",") %>"/>
+      Use a comma to separate tags
+    </div>
+      <input type='submit' class="btn btn-primary btn-lg"/>
+  </form>
+</div>
