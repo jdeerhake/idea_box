@@ -13,14 +13,10 @@ class Idea
   end
 
   def tags_array
-    if @tags.nil?
-      tags_array = []
-    elsif @tags == []
-      tags_array = @tags
-    else
-      tags_array = @tags.split(",").map {|tag| tag.strip}
-    end
-    tags_array
+    # I think this method could use a quick refactor to simplify it a little.
+    # I don't see why @tags would ever be an empty array, am I missing something?
+    return [] if @tags.nil?
+    @tags.split(",").map {|tag| tag.strip}
   end
 
   def <=>(other)

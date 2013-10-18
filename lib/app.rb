@@ -50,6 +50,9 @@ class IdeaBoxApp < Sinatra::Base
     redirect '/'
   end
 
+  # Instead of by_tags, it might make more sense to just make this /tags because it's an index of tags
+  # You could then simplify the tag sorting by making those routes '/tags/:tag' (eg /tags/sample shows all ideas with the sample tag)
+  # This makes the URL more semantic and REST-y, which will make Rails happy when you get there
   get '/by_tags' do
     erb :by_tags, locals: {
         ideas: IdeaStore.grouped_by_tags,

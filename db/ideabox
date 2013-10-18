@@ -1,3 +1,7 @@
+# It's generally considered bad practice to commit data like this to your repo, however in this case it's probably fine.
+# In the future, you can tell git to ignore this file by adding a .gitignore to the project root.
+# More info here: https://help.github.com/articles/ignoring-files
+
 ---
 ideas:
 - title: Whoomp

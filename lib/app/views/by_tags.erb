@@ -1,10 +1,12 @@
 <div class="jumbotron">
   <div class="container">
+  <%# Everything below here should be indented 2 more spaces -%>
   <div class="row">
 
     <%= erb :form, locals: {idea: idea} %>
 
     <div class="col-md-6">
+        <%# This should be 4 spaces not 2 -%>
         <h3>Sorting / Views</h3>
         <form class="form-inline" action='/' method='GET'>
           <div class="form-group">
@@ -31,6 +33,8 @@
       <div class="container">
         <h3><%= tag %></h3>
           <% idea_array.each do |idea| %>
+          <%# This part should be broken out into a partial, so that it can be re-used in index -%>
+          <%# ex: erb :idea, locals: {idea: idea} -%>
           <div class="col-md-4 col-sm-4 panel panel-default">
               <div class="panel-heading">
                 <strong>Title:</strong> <%= idea.title %><br/>

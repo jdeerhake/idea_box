@@ -21,7 +21,8 @@ class IdeaStore
   end
 
   def self.all_tags
-    all_tags = all.map { |idea| idea.tags_array }.flatten.uniq
+    # No need to define the all_tags the variable here
+    all.map { |idea| idea.tags_array }.flatten.uniq
   end
 
   def self.view_by_tag(tag)
@@ -33,8 +34,9 @@ class IdeaStore
   end
 
   def self.grouped_by_tags
-    gbt = all_tags.each_with_object({}) {|tag, h| h[tag] = nil}
-    gbt.each_key do |key|
+    # Just a little simplification
+    gbt = {}
+    all_tags.each do |key|
       gbt[key] = all.find_all {|idea| idea.tags_array.include?(key)}
     end
     gbt
